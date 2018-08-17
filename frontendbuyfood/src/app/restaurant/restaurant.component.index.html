@@ -1,0 +1,41 @@
+<h1 class="title">Restaurantes</h1>
+<a class="button is-info" style="float: right;" [routerLink]="['add']">
+    <span class="icon">
+        <i class="fa fa-plus"></i>
+    </span>
+    <span>Novo</span>
+</a>
+<br/>
+<br/>
+<div class="field">
+    <div class="control">
+        <input class="input is-info" #search (keyup)="0" type="search" placeholder="Pesquisar">
+    </div>
+</div>
+<table class="table is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Restaurante</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let restaurant of restaurants | filterByName: search.value">
+            <td>{{ restaurant.name }}</td>
+            <td>
+                <div class="buttons has-addons is-right">
+                    <a class="button tooltip" [routerLink]="['/restaurants/edit', restaurant.restaurantId]" data-tooltip="Editar">
+                        <span class="icon">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </a>
+                    <button class="button tooltip" (click)="remove(restaurant)" data-tooltip="Excluir">
+                        <span class="icon">
+                            <i class="fa fa-trash"></i>
+                        </span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+<section class="hero is-primary is-bold">
+    <a class="hero-body" [routerLink]="['']">
+        <div class="container">
+            <h1 class="title">
+                BuyFood
+            </h1>
+            <h2 class="subtitle">
+                CEDRO
+            </h2>
+        </div>
+    </a>
+</section>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" [routerLink]="['']">
+            <i class="fa fa-cookie-bite"></i>
+        </a>
+        <a class="navbar-item" [routerLink]="['/restaurants']">
+            Restaurantes
+        </a>
+        <a class="navbar-item" [routerLink]="['/dishs']">
+            Pratos
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+</nav>

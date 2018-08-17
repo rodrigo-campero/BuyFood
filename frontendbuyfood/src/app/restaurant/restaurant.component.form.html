@@ -1,0 +1,38 @@
+<div *ngIf="restaurantForm">
+    <h1 class="title">
+        <span *ngIf="restaurant.restaurantId">Editar</span>
+        <span *ngIf="!restaurant.restaurantId">Novo</span> restaurante</h1>
+    <form [formGroup]="restaurantForm" (submit)="add($event)">
+        <!-- <input (input)="restaurant.name = $event.target.value" [value]="restaurant.name" autocomplete="off"/> -->
+        <div class="field">
+            <label class="label">Nome</label>
+            <div class="control has-icons-left">
+                <!-- <input class="input is-danger" type="email" placeholder="Email input" value="hello@"> -->
+                <input [class]="restaurantForm.controls.name.invalid ? 'input is-danger' : 'input is-success'" type="text" formControlName="name" name="name" [(ngModel)]="restaurant.name" autocomplete="off">
+                <span *ngIf="restaurantForm.controls.name.invalid" class="icon is-small is-left">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                <span *ngIf="!restaurantForm.controls.name.invalid" class="icon is-small is-left">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
+            <div *ngIf="restaurantForm.controls.name.invalid">
+                <p class="help is-danger" *ngIf="restaurantForm.controls.name.errors.minlength">
+                    O nome deve ter no mínimo 4 caracteres
+                </p>
+                <p class="help is-danger" *ngIf="restaurantForm.controls.name.errors.required">
+                    O nome é obrigatório
+                </p>
+            </div>
+        </div>
+        <a class="button" [routerLink]="['/restaurants']">
+            Cancelar
+        </a>
+        <button class="button is-success" type="submit" [disabled]="restaurantForm.invalid">
+            <span class="icon is-small">
+                <i class="fas fa-check"></i>
+            </span>
+            <span>Salvar</span>
+        </button>
+    </form>
+</div>
